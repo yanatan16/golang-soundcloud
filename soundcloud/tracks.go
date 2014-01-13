@@ -1,13 +1,11 @@
 package soundcloud
 
 import (
-	"fmt"
 	"net/url"
 )
 
 type TrackApi struct {
-	api  *Api
-	base string
+	trackEndpoint
 }
 
 func (api *Api) Tracks(params url.Values) ([]Track, error) {
@@ -17,11 +15,15 @@ func (api *Api) Tracks(params url.Values) ([]Track, error) {
 }
 
 func (api *Api) Track(id uint64) *TrackApi {
-	return &TrackApi{api, fmt.Sprintf("/tracks/%d", id)}
+	return &TrackApi{*api.newTrackEndpoint("tracks", id)}
 }
 
-func (u *TrackApi) Get(params url.Values) (*Track, error) {
-	ret := new(Track)
-	err := u.api.get(u.base, params, ret)
+func (t *TrackApi) Comments(params url.Values) ([]Comment, error) {
+	ret := make([]Comment, 0)
+	err := t.api.get(t.base + "/comments", params, &ret)
 	return ret, err
+}
+
+func (t *TrackApi) Comment(id uint64) (*commentEndpoint) {
+	return t.api.newCommentEndpoint(t.base, id)
 }

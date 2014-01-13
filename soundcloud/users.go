@@ -2,13 +2,11 @@ package soundcloud
 
 import (
 	"errors"
-	"fmt"
 	"net/url"
 )
 
 type UserApi struct {
-	api  *Api
-	base string
+	userEndpoint
 }
 
 func (api *Api) Users(params url.Values) ([]User, error) {
@@ -18,14 +16,14 @@ func (api *Api) Users(params url.Values) ([]User, error) {
 }
 
 func (api *Api) User(id uint64) *UserApi {
-	return &UserApi{api, fmt.Sprintf("/users/%d", id)}
+	return &UserApi{*api.newUserEndpoint("users", id)}
 }
 
 func (api *Api) Me() (*UserApi, error) {
 	if !api.Authenticated() {
 		return nil, errors.New("Authenticated credentials required for /me")
 	}
-	return &UserApi{api, "/me"}, nil
+	return &UserApi{*api.newUserEndpoint("me")}, nil
 }
 
 func (u *UserApi) Get(params url.Values) (*User, error) {
@@ -52,8 +50,8 @@ func (u *UserApi) Followings(params url.Values) ([]User, error) {
 	return ret, err
 }
 
-func (u *UserApi) Following(id string) *userEndpoint {
-	return u.api.newUserEndpoint(false, u.base, "followings", id)
+func (u *UserApi) Following(id uint64) *userEndpoint {
+	return u.api.newUserEndpoint(u.base, "followings", id)
 }
 
 func (u *UserApi) Followers(params url.Values) ([]User, error) {
@@ -63,7 +61,7 @@ func (u *UserApi) Followers(params url.Values) ([]User, error) {
 }
 
 func (u *UserApi) Follower(id string) *userEndpoint {
-	return u.api.newUserEndpoint(true, u.base, "followers", id)
+	return u.api.newUserEndpoint(u.base, "followers", id)
 }
 
 func (u *UserApi) Comments(params url.Values) ([]Comment, error) {
@@ -79,7 +77,7 @@ func (u *UserApi) Favorites(params url.Values) ([]Track, error) {
 }
 
 func (u *UserApi) Favorite(id string) *trackEndpoint {
-	return u.api.newTrackEndpoint(false, u.base, "favorites", id)
+	return u.api.newTrackEndpoint(u.base, "favorites", id)
 }
 
 func (u *UserApi) Groups(params url.Values) ([]Group, error) {
