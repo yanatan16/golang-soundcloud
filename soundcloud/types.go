@@ -22,7 +22,7 @@ type User struct {
 	WebsiteTitle         string `json:"website_title"`
 	Online               bool
 	TrackCount           uint64 `json:"track_count"`
-	Playlistcount        uint64 `json:"playlist_count"`
+	PlaylistCount        uint64 `json:"playlist_count"`
 	FollowersCount       uint64 `json:"followers_count"`
 	FollowingsCount      uint64 `json:"followings_count"`
 	PublicFavoritesCount uint64 `json:"public_favorites_count"`
