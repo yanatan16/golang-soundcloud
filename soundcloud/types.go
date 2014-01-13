@@ -62,7 +62,7 @@ type Track struct {
 	DownloadUrl         string `json:"download_url"`
 	StreamUrl           string `json:"stream_url"`
 	VideoUrl            string `json:"video_url"`
-	Bpm                 uint
+	Bpm                 float64
 	Commentable         bool
 	ISRC                string `json:"isrc"`
 	KeySignature        string `json:"key_signature"`

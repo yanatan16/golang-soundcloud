@@ -1,20 +1,20 @@
 package soundcloud
 
 import (
-	// "net/url"
+	"net/url"
 	"testing"
 )
 
-// func TestTracks(t *testing.T) {
-// 	ret, err := api.Users(url.Values{"q": []string{"ladygaga"}})
-// 	if err != nil {
-// 		t.Error(err)
-// 	} else if len(ret) == 0 {
-// 		t.Error("query returned no values")
-// 	} else if ret[0].Username != "ladygaga" {
-// 		t.Error("lady gaga wasn't the first response?!")
-// 	}
-// }
+func TestTracks(t *testing.T) {
+	ret, err := api.Tracks(url.Values{"q": []string{"welcome to night vale"}})
+	if err != nil {
+		t.Error(err)
+	} else if len(ret) == 0 {
+		t.Error("query returned no values")
+	} else if ret[0].User.Username != "planetoffinks" {
+		t.Error("planetoffinks wasn't the creator first response?!")
+	}
+}
 
 func TestTrackGet(t *testing.T) {
 	ret, err := api.Track(thriftshop_id).Get(nil)
