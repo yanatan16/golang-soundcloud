@@ -1,8 +1,8 @@
 package soundcloud
 
 import (
-	"net/url"
 	"fmt"
+	"net/url"
 	"testing"
 )
 
@@ -70,10 +70,10 @@ func TestUserFollowings(t *testing.T) {
 	_, err := api.User(joneisen_id).Followings(nil)
 	if err != nil {
 		t.Error(err)
-	// } else if len(ret) != 1 {
-	// 	t.Error("should be following only one user", ret)
-	// } else if ret[0].Id != macklemore_id {
-	// 	t.Error("Should be following macklemore")
+		// } else if len(ret) != 1 {
+		// 	t.Error("should be following only one user", ret)
+		// } else if ret[0].Id != macklemore_id {
+		// 	t.Error("Should be following macklemore")
 	}
 }
 
@@ -81,7 +81,7 @@ func TestUserFollowers(t *testing.T) {
 	ret, err := api.User(ladygaga_id).Followers(nil)
 	if err != nil {
 		t.Error(err)
-	} else if len(ret)  == 0 {
+	} else if len(ret) == 0 {
 		t.Error("should be followed by millions!")
 	}
 }

@@ -1,8 +1,8 @@
 package soundcloud
 
 import (
-  "net/url"
-  "fmt"
+	"fmt"
+	"net/url"
 )
 
 type TrackApi struct {

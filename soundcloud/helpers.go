@@ -5,18 +5,16 @@ import (
 	"strings"
 )
 
-
 func Values(keyValues ...string) url.Values {
-  v := url.Values{}
-  for i := 0; i < len(keyValues)-1; i += 2 {
-    v.Set(keyValues[i], keyValues[i+1])
-  }
-  return v
+	v := url.Values{}
+	for i := 0; i < len(keyValues)-1; i += 2 {
+		v.Set(keyValues[i], keyValues[i+1])
+	}
+	return v
 }
 func (api *Api) Values(keyValues ...string) url.Values {
-  return Values(keyValues...)
+	return Values(keyValues...)
 }
-
 
 type userEndpoint struct {
 	api     *Api
@@ -45,19 +43,18 @@ func (u *userEndpoint) Get(params url.Values) (error, *User) {
 //   return err, ret
 // }
 
-
 type trackEndpoint struct {
-  api     *Api
-  base    string
-  getOnly bool
+	api     *Api
+	base    string
+	getOnly bool
 }
 
 func (api *Api) newTrackEndpoint(getOnly bool, dirs ...string) *trackEndpoint {
-  return &trackEndpoint{api, "/" + strings.Join(dirs, "/"), getOnly}
+	return &trackEndpoint{api, "/" + strings.Join(dirs, "/"), getOnly}
 }
 
 func (t *trackEndpoint) Get(params url.Values) (error, *Track) {
-  ret := new(Track)
-  err := t.api.get(t.base, params, ret)
-  return err, ret
+	ret := new(Track)
+	err := t.api.get(t.base, params, ret)
+	return err, ret
 }

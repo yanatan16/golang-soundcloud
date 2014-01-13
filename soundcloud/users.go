@@ -1,9 +1,9 @@
 package soundcloud
 
 import (
-  "net/url"
-  "errors"
-  "fmt"
+	"errors"
+	"fmt"
+	"net/url"
 )
 
 type UserApi struct {
@@ -22,10 +22,10 @@ func (api *Api) User(id uint64) *UserApi {
 }
 
 func (api *Api) Me() (*UserApi, error) {
-  if (!api.Authenticated()) {
-    return nil, errors.New("Authenticated credentials required for /me")
-  }
-  return &UserApi{api, "/me"}, nil
+	if !api.Authenticated() {
+		return nil, errors.New("Authenticated credentials required for /me")
+	}
+	return &UserApi{api, "/me"}, nil
 }
 
 func (u *UserApi) Get(params url.Values) (*User, error) {

@@ -59,7 +59,9 @@ func (api *Api) extendParams(p url.Values, keyvalues ...string) url.Values {
 		p = url.Values{}
 	}
 	for i, value := range keyvalues {
-		if i % 2 == 0 { continue; }
+		if i%2 == 0 {
+			continue
+		}
 		p.Set(keyvalues[i-1], value)
 	}
 	if api.AccessToken != "" {

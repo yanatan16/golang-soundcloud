@@ -38,17 +38,17 @@ type Track struct {
 	*SubUser
 	*SubPermalink
 
-	CreatedAt           string `json:"created_at"`
-	Title               string
-	Sharing             string
-	EmbeddableBy        string `json:"embeddable_by"`
-	PurchaseUrl         string `json:"purchase_url"`
-	ArtworkUrl          string `json:"artwork_url"`
-	Description         string
-	Duration            uint64
-	Genre               string
-	SharedToCount       uint64 `json:"shared_to_count"`
-	TagList             string `json:"tag_list"`
+	CreatedAt     string `json:"created_at"`
+	Title         string
+	Sharing       string
+	EmbeddableBy  string `json:"embeddable_by"`
+	PurchaseUrl   string `json:"purchase_url"`
+	ArtworkUrl    string `json:"artwork_url"`
+	Description   string
+	Duration      uint64
+	Genre         string
+	SharedToCount uint64 `json:"shared_to_count"`
+	TagList       string `json:"tag_list"`
 	// Release             uint64 // Release is sometimes "" and sometimes null and sometimes a number?
 	ReleaseDay          uint `json:"release_day"`
 	ReleaseMonth        uint `json:"release_month"`
@@ -99,13 +99,13 @@ type Playlist struct {
 	SharedToCount uint64 `json:"shared_to_count"`
 	TagList       string `json:"tag_list"`
 	// Release       uint64 //See release above
-	ReleaseDay    uint `json:"release_day"`
-	ReleaseMonth  uint `json:"release_month"`
-	ReleaseYear   uint `json:"release_year"`
-	Streamable    bool
-	Downloadable  bool
-	EAN           string `json:"ean"`
-	PlaylistType  string `json:"playlist_type"`
+	ReleaseDay   uint `json:"release_day"`
+	ReleaseMonth uint `json:"release_month"`
+	ReleaseYear  uint `json:"release_year"`
+	Streamable   bool
+	Downloadable bool
+	EAN          string `json:"ean"`
+	PlaylistType string `json:"playlist_type"`
 }
 
 // Groups of members with tracks (http://developers.soundcloud.com/docs/api/reference#groups)
