@@ -1,6 +1,6 @@
 # golang-soundcloud
 
-A [soundcloud](http://soundcloud.com) [API](http://developers.soundcloud.com) wrapper.
+A (_incomplete_) [SoundCloud](http://soundcloud.com) [API](http://developers.soundcloud.com) wrapper.
 
 ## Features
 
