@@ -63,8 +63,9 @@ func (api *Api) extendParams(p url.Values, keyvalues ...string) url.Values {
 		p.Set(keyvalues[i-1], value)
 	}
 	if api.AccessToken != "" {
-		p.Set("access_token", api.AccessToken)
-	} else {
+		p.Set("oauth_token", api.AccessToken)
+	}
+	if api.ClientId != "" {
 		p.Set("client_id", api.ClientId)
 	}
 	return p
