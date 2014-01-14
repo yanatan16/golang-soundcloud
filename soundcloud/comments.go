@@ -1,7 +1,6 @@
 package soundcloud
 
-import (
-)
+import ()
 
 type CommentApi struct {
 	commentEndpoint
@@ -15,4 +14,3 @@ func (api *Api) Comment(id uint64) *CommentApi {
 // func (t *PlaylistApi) SharedToUsers() (*usersEndpoint) {
 // func (t *PlaylistApi) SharedToEmails() (*emailsEndpoint) {
 // func (t *PlaylistApi) SecretToken() (*tokenEndpoint)
-

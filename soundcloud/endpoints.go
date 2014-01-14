@@ -1,13 +1,13 @@
 package soundcloud
 
 import (
-	"net/url"
 	"fmt"
+	"net/url"
 )
 
 type endpoint struct {
-	api *Api
-	base string
+	api     *Api
+	base    string
 	authReq bool
 }
 
@@ -25,7 +25,7 @@ func (api *Api) newEndpoint(dirs ...interface{}) endpoint {
 			path += fmt.Sprintf("/%d", idir)
 			continue
 		}
-		if bdir, ok := dir.(bool); ok && i + 1 == len(dirs) {
+		if bdir, ok := dir.(bool); ok && i+1 == len(dirs) {
 			authReq = bdir
 		}
 		panic("Only strings and uint64 accepted; last can be bool")

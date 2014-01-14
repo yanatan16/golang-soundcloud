@@ -3,17 +3,17 @@ package soundcloud
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
-	"errors"
 )
 
 var (
-	baseUrl = "https://api.soundcloud.com"
-	client *http.Client = &http.Client{
+	baseUrl              = "https://api.soundcloud.com"
+	client  *http.Client = &http.Client{
 		CheckRedirect: noRedirects,
 	}
 )
@@ -23,10 +23,10 @@ func noRedirects(req *http.Request, via []*http.Request) error {
 }
 
 type Api struct {
-	ClientId    	string
-	ClientSecret 	string
-	AccessToken 	string
-	RefreshToken	string
+	ClientId     string
+	ClientSecret string
+	AccessToken  string
+	RefreshToken string
 }
 
 func (api *Api) Authenticated() bool {
@@ -132,8 +132,8 @@ func (api *Api) nonget(method, path string, params url.Values, r interface{}, au
 func (api *Api) do(req *http.Request, r interface{}) error {
 	resp, err := client.Do(req)
 	if urlerr, ok := err.(*url.Error); ok && urlerr.Err.Error() == "No redirects!" {
-    err = nil
-  } else if err != nil {
+		err = nil
+	} else if err != nil {
 		return err
 	}
 	defer resp.Body.Close()

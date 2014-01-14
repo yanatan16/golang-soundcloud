@@ -8,8 +8,8 @@ type PlaylistApi struct {
 	playlistEndpoint
 }
 
-func (api *Api) Playlists(params url.Values) ([]Playlist, error) {
-	ret := make([]Playlist, 0)
+func (api *Api) Playlists(params url.Values) ([]*Playlist, error) {
+	ret := make([]*Playlist, 0)
 	err := api.get("/playlists", params, &ret)
 	return ret, err
 }
@@ -22,4 +22,3 @@ func (api *Api) Playlist(id uint64) *PlaylistApi {
 // func (t *PlaylistApi) SharedToUsers() (*usersEndpoint) {
 // func (t *PlaylistApi) SharedToEmails() (*emailsEndpoint) {
 // func (t *PlaylistApi) SecretToken() (*tokenEndpoint)
-

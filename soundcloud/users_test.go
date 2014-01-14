@@ -55,7 +55,7 @@ func TestUserTracksCreatedAtFrom(t *testing.T) {
 	ret, err := api.User(macklemore_id).Tracks(api.Values("created_at[from]", "2013/03/17 18:37:51"))
 	if err != nil {
 		t.Error(err)
-	} else if ret[len(ret) - 1].CreatedAt != "2013/03/17 18:37:51 +0000" {
+	} else if ret[len(ret)-1].CreatedAt != "2013/03/17 18:37:51 +0000" {
 		t.Error("Created At didn't work right")
 	}
 }

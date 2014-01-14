@@ -210,13 +210,13 @@ type Pagination struct {
 }
 
 type Resolution struct {
-	Status string
+	Status   string
 	Location string
 }
 
 type AuthResponse struct {
-	AccessToken string `json:"access_token"`
+	AccessToken  string `json:"access_token"`
 	RefreshToken string `json:"refresh_token"`
-	ExpiresIn uint64 `json:"expires_in"`
-	Scope string
+	ExpiresIn    uint64 `json:"expires_in"`
+	Scope        string
 }
