@@ -2,7 +2,6 @@ package soundcloud
 
 import (
 	"fmt"
-	"net/url"
 )
 
 func (api *Api) Refresh() error {
@@ -10,12 +9,12 @@ func (api *Api) Refresh() error {
 		return fmt.Errorf("ClientId, ClientSecret, and RefreshToken must all be specified")
 	}
 
-	values := url.Values{
-		"client_id":     []string{api.ClientId},
-		"client_secret": []string{api.ClientSecret},
-		"refresh_token": []string{api.RefreshToken},
-		"grant_type":    []string{"refresh_token"},
-	}
+	values := Values(
+		"client_id",     api.ClientId,
+		"client_secret", api.ClientSecret,
+		"refresh_token", api.RefreshToken,
+		"grant_type",    "refresh_token",
+	)
 
 	ret := new(AuthResponse)
 	err := api.post("/oauth2/token", values, ret)
@@ -23,7 +22,7 @@ func (api *Api) Refresh() error {
 	if err == nil {
 		api.AccessToken = ret.AccessToken
 		api.RefreshToken = ret.RefreshToken
-	}
+  }
 
 	return err
 }
