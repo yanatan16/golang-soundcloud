@@ -27,6 +27,7 @@ func (api *Api) newEndpoint(dirs ...interface{}) endpoint {
 		}
 		if bdir, ok := dir.(bool); ok && i+1 == len(dirs) {
 			authReq = bdir
+			continue
 		}
 		panic("Only strings and uint64 accepted; last can be bool")
 	}

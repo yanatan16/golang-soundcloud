@@ -11,5 +11,5 @@ var TestConfig map[string]string = map[string]string{
   "client_secret": "",
   "access_token": "",
   "refresh_token": "",
-  "my_id": "", // The authenticated user's ID
+  "my_id": uint64(1234567), // The authenticated user's ID
 }

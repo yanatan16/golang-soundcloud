@@ -80,13 +80,13 @@ func (api *Api) extendParams(p url.Values, auth ...bool) (url.Values, error) {
 	}
 
 	if !(len(auth) > 0 && auth[0]) {
-		p.Set("client_id", api.ClientId)
+    if api.AccessToken != "" {
+      p.Set("oauth_token", api.AccessToken)
+    } else {
+      return p, errors.New("Access token required to use this endpoint")
+    }
 	} else {
-		if api.AccessToken != "" {
-			p.Set("oauth_token", api.AccessToken)
-		} else {
-			return p, errors.New("Access token required to use this endpoint")
-		}
+		p.Set("client_id", api.ClientId)
 	}
 	return p, nil
 }
