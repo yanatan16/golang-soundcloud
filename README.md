@@ -6,15 +6,16 @@ A (_incomplete_) [SoundCloud](http://soundcloud.com) [API](http://developers.sou
 
 Implemented:
 
-- Some GET requests are implemented
+- Most GET requests are implemented
 - Both authenticated and unauthenticated requests can be made
+- Refreshes tokens
 - No `interface{}` data types!
 
 Todo:
 
 - The full set of GET requests
-- Authentication
-- POST / DELETE requests
+- Full Authentication
+- POST / PUT / DELETE requests
 
 ## Contributing
 
@@ -40,14 +41,13 @@ import (
 unauthenticatedApi := &soundcloud.Api{
   ClientId: "my-client-id",
 }
-// Or
-unauthenticatedApi2 := soundcloud.New("my-client-id","")
 
 authenticatedApi := &soundcloud.Api{
+  ClientId: "my-client-id",
+  ClientSecret: "my-client-secret",
   AccessToken: "my-access-token",
+  RefreshToken: "my-refresh-token",
 }
-// or
-authenticatedApi2 := soundcloud.New("", "my-access-token")
 ```
 
 ## Usage

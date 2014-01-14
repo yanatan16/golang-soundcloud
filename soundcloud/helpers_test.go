@@ -29,5 +29,13 @@ func authorizedRequest(t *testing.T) {
 }
 
 func createApi() *Api {
-	return New(TestConfig["client_id"], TestConfig["access_token"])
+	api := &Api{
+		ClientId: TestConfig["client_id"],
+		ClientSecret: TestConfig["client_secret"],
+		AccessToken: TestConfig["access_token"],
+		RefreshToken: TestConfig["refresh_token"],
+	}
+
+	_ = api.Refresh()
+	return api
 }

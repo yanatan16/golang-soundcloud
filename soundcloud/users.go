@@ -1,7 +1,6 @@
 package soundcloud
 
 import (
-	"errors"
 	"net/url"
 )
 
@@ -17,13 +16,6 @@ func (api *Api) Users(params url.Values) ([]User, error) {
 
 func (api *Api) User(id uint64) *UserApi {
 	return &UserApi{*api.newUserEndpoint("users", id)}
-}
-
-func (api *Api) Me() (*UserApi, error) {
-	if !api.Authenticated() {
-		return nil, errors.New("Authenticated credentials required for /me")
-	}
-	return &UserApi{*api.newUserEndpoint("me")}, nil
 }
 
 func (u *UserApi) Get(params url.Values) (*User, error) {

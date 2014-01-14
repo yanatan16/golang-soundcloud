@@ -25,5 +25,21 @@ func (t *TrackApi) Comments(params url.Values) ([]Comment, error) {
 }
 
 func (t *TrackApi) Comment(id uint64) (*commentEndpoint) {
-	return t.api.newCommentEndpoint(t.base, id)
+	return t.api.newCommentEndpoint(t.base, "comments", id)
 }
+
+func (t *TrackApi) Favorites(params url.Values) ([]User, error) {
+	ret := make([]User, 0)
+	err := t.api.get(t.base + "/favorites", params, &ret)
+	return ret, err
+}
+
+func (t *TrackApi) Favorite(id uint64) (*userEndpoint) {
+	return t.api.newUserEndpoint(t.base, "favorites", id)
+}
+
+// No idea how these endpoints works
+// func (t *TrackApi) SharedToUsers() (*usersEndpoint) {
+// func (t *TrackApi) SharedToEmails() (*emailsEndpoint) {
+// func (t *TrackApi) SecretToken() (*tokenEndpoint)
+

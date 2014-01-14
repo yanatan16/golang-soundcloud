@@ -208,3 +208,15 @@ type SubUser struct {
 type Pagination struct {
 	NextHref string `json:"next_href"`
 }
+
+type Resolution struct {
+	Status string
+	Location string
+}
+
+type AuthResponse struct {
+	AccessToken string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
+	ExpiresIn uint64 `json:"expires_in"`
+	Scope string
+}
