@@ -13,7 +13,7 @@ type ApiError struct {
 }
 
 type errorResponse struct {
-  Error string
+  Error interface{}
 }
 
 func newApiError(req *http.Request, resp *http.Response) *ApiError {
@@ -24,7 +24,7 @@ func newApiError(req *http.Request, resp *http.Response) *ApiError {
   }
 
 	repr := fmt.Sprintf("Bad response code %d", resp.StatusCode)
-	return &ApiError{Repr: repr, Code: resp.StatusCode, URL: req.URL.String(), Message: errResp.Error}
+	return &ApiError{Repr: repr, Code: resp.StatusCode, URL: req.URL.String(), Message: fmt.Sprintf("%v", errResp.Error)}
 }
 
 func newApiErrorStack(err error, req *http.Request, resp *http.Response) *ApiError {
