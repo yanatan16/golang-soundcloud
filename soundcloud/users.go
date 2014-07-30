@@ -20,7 +20,7 @@ func (api *Api) User(id uint64) *UserApi {
 
 func (u *UserApi) Get(params url.Values) (*User, error) {
 	ret := new(User)
-	err := u.api.get(u.base, params, ret)
+	err := u.api.get(u.base, params, ret, u.authReq)
 	return ret, err
 }
 
