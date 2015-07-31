@@ -6,22 +6,22 @@ import (
 )
 
 type ApiError struct {
-	Repr     string
-  URL string
-	Code int
-  Message string
+	Repr    string
+	URL     string
+	Code    int
+	Message string
 }
 
 type errorResponse struct {
-  Error interface{}
+	Error interface{}
 }
 
 func newApiError(req *http.Request, resp *http.Response) *ApiError {
-  errResp := new(errorResponse)
-  err := decodeResponse(resp.Body, errResp)
-  if err != nil {
-    errResp.Error = "<could not read body>"
-  }
+	errResp := new(errorResponse)
+	err := decodeResponse(resp.Body, errResp)
+	if err != nil {
+		errResp.Error = "<could not read body>"
+	}
 
 	repr := fmt.Sprintf("Bad response code %d", resp.StatusCode)
 	return &ApiError{Repr: repr, Code: resp.StatusCode, URL: req.URL.String(), Message: fmt.Sprintf("%v", errResp.Error)}

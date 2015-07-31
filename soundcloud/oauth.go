@@ -10,10 +10,10 @@ func (api *Api) Refresh() error {
 	}
 
 	values := Values(
-		"client_id",     api.ClientId,
+		"client_id", api.ClientId,
 		"client_secret", api.ClientSecret,
 		"refresh_token", api.RefreshToken,
-		"grant_type",    "refresh_token",
+		"grant_type", "refresh_token",
 	)
 
 	ret := new(AuthResponse)
@@ -22,7 +22,7 @@ func (api *Api) Refresh() error {
 	if err == nil {
 		api.AccessToken = ret.AccessToken
 		api.RefreshToken = ret.RefreshToken
-  }
+	}
 
 	return err
 }
