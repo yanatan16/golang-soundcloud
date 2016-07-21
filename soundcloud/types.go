@@ -106,6 +106,7 @@ type Playlist struct {
 	Downloadable bool
 	EAN          string `json:"ean"`
 	PlaylistType string `json:"playlist_type"`
+	Tracks       []*Track
 }
 
 // Groups of members with tracks (http://developers.soundcloud.com/docs/api/reference#groups)
