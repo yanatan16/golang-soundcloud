@@ -12,3 +12,14 @@ func TestResolve(t *testing.T) {
 		t.Error("resolve didn't work " + ret.String())
 	}
 }
+
+func TestResolveEmptyUrl(t *testing.T) {
+	_, err := api.Resolve("http://soundcloud.com/xxx/yyy")
+	if err == nil {
+		t.Error("err is nil")
+	}
+
+	if err.Error() != "empty location" {
+		t.Error("wrong error")
+	}
+}

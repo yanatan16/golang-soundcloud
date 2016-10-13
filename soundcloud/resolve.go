@@ -1,6 +1,7 @@
 package soundcloud
 
 import (
+	"errors"
 	"net/url"
 )
 
@@ -23,5 +24,9 @@ func (api *Api) Resolve(scurl string) (uri *url.URL, err error) {
 	}
 
 	loc, err := resp.Location()
+	if loc == nil {
+		return nil, errors.New("empty location")
+	}
+
 	return loc, nil
 }
